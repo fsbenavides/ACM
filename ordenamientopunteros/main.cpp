@@ -9,9 +9,9 @@ void cambiazo(int *a,int *b){
 
 }
 
-void burbuja(int lista[],int largo){
-    for(int *i=lista;i<&lista[largo];i++){
-        for(int *j=lista;j<&lista[largo]-1;j++){
+void burbuja(int *lista,int largo){
+    for(int *i=lista;i<lista+largo;i++){
+        for(int *j=lista;j<lista+largo-1;j++){
             if(*j>*(j+1)){
                 cambiazo(j,j+1);
             }
@@ -19,9 +19,9 @@ void burbuja(int lista[],int largo){
     }
 }
 
-void imprimirlista(int lista[],int largo){
-    for(int *i=lista;i<&lista[largo];i++){
-           if(*i==lista[largo-1]){
+void imprimirlista(int *lista,int largo){
+    for(int *i=lista;i<lista+largo;i++){
+           if(i==lista+largo-1){
             cout<<*i<<endl;
            }
            else
@@ -29,7 +29,7 @@ void imprimirlista(int lista[],int largo){
     }
 }
 
-
+/*
 int division(int lista[],int inicio,int fin){
     int *pivote=(lista+fin-1);
     int var=inicio-1;
@@ -50,15 +50,30 @@ void quicksort(int lista[],int inicio, int fin){
         quicksort(lista,p+1,fin);
     }
 }
+*/
+
+void insertionsort(int *lista,int largo){
+    int clave;
+    int j;
+    for (int *i=lista;i<lista+largo;i++){
+        clave=*(lista+1);
+        j=(*i)-1;
+        while(j>=0 && *(lista+j)>clave){
+            *(lista+j+1)= *(lista+j);
+            j=j-1;
+        }
+        *(lista+j+1)=clave;
+    }
+}
 
 
 
-void cocktail(int lista[],int largo){
+void cocktail(int *lista,int largo){
     bool cambiado=true;
     while(cambiado){
         cambiado=false;
 
-        for(int *i=lista;i<&lista[largo];++i){
+        for(int *i=lista;i<lista+largo;++i){
             if(*i>*(i+1)){
                 cambiazo(i,i+1);
                 cambiado=true;
@@ -72,7 +87,7 @@ void cocktail(int lista[],int largo){
         cambiado=false;
 
 
-        for(int *i=&lista[largo]-1;i>=lista;--i){
+        for(int *i=lista+largo-1;i>=lista;--i){
             if(*i>*(i+1)){
                 cambiazo(i,i+1);
                 cambiado=true;
@@ -91,7 +106,7 @@ int main()
     int arr[5]={3,2,5,4,1};
 
     imprimirlista(arr,5);
-    quicksort(arr,0,5);
+    insertionsort(arr,5);
     imprimirlista(arr,5);
 
 
