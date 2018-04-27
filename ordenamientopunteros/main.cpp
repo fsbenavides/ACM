@@ -29,42 +29,61 @@ void imprimirlista(int *lista,int largo){
     }
 }
 
-/*
-int division(int lista[],int inicio,int fin){
-    int *pivote=(lista+fin-1);
-    int var=inicio-1;
+int division(int *lista,int inicio,int fin){
+    int *pivote=lista+fin;
+    int *var=lista;
     for (int *i=lista;i<lista+fin;i++){
         if(*i<=*pivote){
             var++;
-            cambiazo(lista+var,i);
+            cambiazo(var,i);
         }
     }
-    cambiazo(lista+var+1,lista+fin);
-    return (var+1);
+    cambiazo(var+1,lista+fin);
+    return (*var+1);
+
 }
 
-void quicksort(int lista[],int inicio, int fin){
+void quicksort(int *lista,int inicio, int fin){
     if(inicio<fin){
-        int p = division(lista,inicio,fin);
+        int p =division(lista,inicio,fin);
         quicksort(lista,inicio,p-1);
         quicksort(lista,p+1,fin);
     }
-}
-*/
 
-void insertionsort(int *lista,int largo){
-    int clave;
-    int j;
-    for (int *i=lista;i<lista+largo;i++){
-        clave=*(lista+1);
-        j=(*i)-1;
-        while(j>=0 && *(lista+j)>clave){
-            *(lista+j+1)= *(lista+j);
-            j=j-1;
-        }
-        *(lista+j+1)=clave;
+
+}
+
+
+void selectionsort(int *lista, int largo){
+
+    int *minimo;
+
+    for (int *i = lista; i < lista+largo; i++){
+        minimo = i;
+        for (int *j = i+1; j < lista+largo; j++)
+          if (*j < *minimo)
+            minimo = j;
+
+        cambiazo(minimo,i);
     }
 }
+
+void insertionsort(int *lista, int largo){
+   int *clave;
+   int *j;
+   for (int *i = lista; i < lista+largo; i++)
+   {
+       clave = i;
+       j = i-1;
+       while (j >= 0 && *j > *clave)
+       {
+           ++j =j;
+           j--;
+       }
+       *(j++) = *clave;
+   }
+}
+
 
 
 
@@ -106,7 +125,7 @@ int main()
     int arr[5]={3,2,5,4,1};
 
     imprimirlista(arr,5);
-    insertionsort(arr,5);
+    quicksort(arr,0,5);
     imprimirlista(arr,5);
 
 
