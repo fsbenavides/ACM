@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1524801582 source:c:\users\usuario\desktop\xd\tarea5\main.cpp
+	<iostream>
+	<fstream>
+
