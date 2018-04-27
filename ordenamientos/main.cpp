@@ -91,9 +91,35 @@ void cocktail(int lista[],int largo){
     }
 }
 
+void insertionsort(int lista[], int largo){
+   int clave;
+   int j;
+   for (int i = 1; i < largo; i++)
+   {
+       clave = lista[i];
+       j = i-1;
+       while (j >= 0 && lista[j] > clave)
+       {
+           lista[j+1] = lista[j];
+           j = j-1;
+       }
+       lista[j+1] = clave;
+   }
+}
 
+void selectionsort(int lista[], int largo){
 
+    int minimo;
 
+    for (int i = 0; i < largo-1; i++){
+        minimo = i;
+        for (int j = i+1; j < largo; j++)
+          if (lista[j] < lista[minimo])
+            minimo = j;
+
+        cambiazo(&lista[minimo], &lista[i]);
+    }
+}
 
 
 int main()
@@ -101,7 +127,7 @@ int main()
     int arr[5]={3,2,5,4,1};
 
     imprimirlista(arr,5);
-    cocktail(arr,5);
+    selectionsort(arr,5);
     imprimirlista(arr,5);
 
 
