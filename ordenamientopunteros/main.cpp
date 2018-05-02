@@ -29,29 +29,7 @@ void imprimirlista(int *lista,int largo){
     }
 }
 
-int division(int *lista,int inicio,int fin){
-    int *pivote=lista+fin;
-    int *var=lista;
-    for (int *i=lista;i<lista+fin;i++){
-        if(*i<=*pivote){
-            var++;
-            cambiazo(var,i);
-        }
-    }
-    cambiazo(var+1,lista+fin);
-    return (*var+1);
 
-}
-
-void quicksort(int *lista,int inicio, int fin){
-    if(inicio<fin){
-        int p =division(lista,inicio,fin);
-        quicksort(lista,inicio,p-1);
-        quicksort(lista,p+1,fin);
-    }
-
-
-}
 
 
 void selectionsort(int *lista, int largo){
@@ -67,23 +45,47 @@ void selectionsort(int *lista, int largo){
         cambiazo(minimo,i);
     }
 }
-
-void insertionsort(int *lista, int largo){
-   int *clave;
+void quicksort (int *lista, int largo) {
+    if (largo < 2)
+        return;
+    int p = lista[largo / 2];
+    int *l = lista;
+    int *r = lista + largo - 1;
+    while (l <= r) {
+        if (*l < p) {
+            l++;
+        }
+        else if (*r > p) {
+            r--;
+        }
+        else {
+            int t = *l;
+            *l = *r;
+            *r = t;
+            l++;
+            r--;
+        }
+    }
+    quicksort(lista, r - lista + 1);
+    quicksort(l, lista + largo - l);
+}
+void insertionsort(int *arr, int n)
+{
+   int key;
    int *j;
-   for (int *i = lista; i < lista+largo; i++)
+   for (int *i = arr; i < arr+n; i++)
    {
-       clave = i;
+       key = *i;
        j = i-1;
-       while (j >= 0 && *j > *clave)
+
+       while (j >= arr && *j > key)
        {
-           ++j =j;
-           j--;
+           *(j+1) = *j;
+           j = j-1;
        }
-       *(j++) = *clave;
+       *(j+1) = key;
    }
 }
-
 
 
 
@@ -122,11 +124,11 @@ void cocktail(int *lista,int largo){
 
 int main()
 {
-    int arr[5]={3,2,5,4,1};
+    int arr[10]={3,2,5,4,1,10,8,9,7,6};
 
-    imprimirlista(arr,5);
-    quicksort(arr,0,5);
-    imprimirlista(arr,5);
+    imprimirlista(arr,10);
+    insertionsort(arr,10);
+    imprimirlista(arr,10);
 
 
 
