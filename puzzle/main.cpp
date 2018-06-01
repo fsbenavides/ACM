@@ -1,15 +1,13 @@
 #include <iostream>
 #include <stdlib.h>
+#include <conio.h>
 
 using namespace std;
 
 
-bool comprobar(int *a,int *b){
-    for(int *i=a;i<a+16;i++){
-        for(int *j=b;j<b+16;j++){
-            if(*i!=*j)return false;
-               return true;
-        }
+void comprobar(int *a,int *b,bool *x){
+    for(int i=0;i<16;i++){
+        if(*(a+i)!=*(b+i))*x=false;
     }
 }
 void cambiazo(int *a,int *b){
@@ -32,10 +30,11 @@ void print(int *lista){
     }
     cout<<endl;
 }
-void desordenar(int *a,int num,int *tablero){
+void desordenar(int *&a,int num,int *tablero,int &i,int &d){
     int var;
-    int i=0;
-    int d=0;
+    a=tablero+15;
+    i=3;
+    d=0;
     for(int j=0;j<=num;j++){
         var=rand()%4;
         switch(var){
@@ -45,21 +44,25 @@ void desordenar(int *a,int num,int *tablero){
             a=a+4;}
             break;
         case 1:
-            if(i<3&&a<tablero+16){
+            if(i<3&&a<tablero+15){
                 cambiazo(a,a+1);
                 a=a+1;
-                if(i<4)
+                 if(i<4){
                     i++;
-                d--;
+                    if(d>0)
+                        d--;
+                }
             }
             break;
         case 2:
             if(d<3&&a>tablero){
                 cambiazo(a,a-1);
                 a=a-1;
-                if(d<4)
+                if(d<4){
                     d++;
-                i--;
+                    if(i>0)
+                        i--;
+                }
             }
             break;
         case 3:
@@ -75,59 +78,69 @@ void desordenar(int *a,int num,int *tablero){
 }
 int main()
 {
-    int tablero[16]={0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15};
-    int solucion[16]={0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15};
+    int tablero[16]={1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,0};
+    int solucion[16]={1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,0};
 
     int *a;
-    a=tablero;
-    int i=0;
+    a=tablero+15;
+    int i=3;
     int d=0;
+    bool y=true;
 
-    desordenar(a,2,tablero);
+    desordenar(a,2,tablero,i,d);
     print((int*)tablero);
     while(true){
-        string x;
+        char x;
         cout<<"indique accion"<<endl;
-        cin>>x;
+        x=getche();
+        y=true;
 
 
-        if(x=="salir"){return false;}
-        if(x=="mostrar")print((int *)tablero);
 
-        if(x=="w"&&a<tablero+12){
+
+        if(x=='s'&&a<tablero+12){
             cambiazo(a,a+4);
             a=a+4;
             print((int *)tablero);
-            if(comprobar(tablero,solucion)){cout<<"ganador"<<endl;return false;}
-
+            comprobar(tablero,solucion,&y);
+            if(y){cout<<"ganador"<<endl;return false;}
 
         }
-        if(x=="a"&&i<3&&a<tablero+16){
+        if(x=='d'&&i<3&&a<tablero+15){
             cambiazo(a,a+1);
             a=a+1;
             print((int *)tablero);
 
-            if(i<4)
+            if(i<3){
                 i++;
-                d--;
-            if(comprobar(tablero,solucion)){cout<<"ganador"<<endl;return false;}
+                if(d>0)
+                    d--;
+            }
+
+            comprobar(tablero,solucion,&y);
+            if(y){cout<<"ganador"<<endl;return false;}
 
         }
-        if(x=="d"&&d<3&&a>tablero){
+        if(x=='a'&&d<3&&a>tablero){
             cambiazo(a,a-1);
             a=a-1;
             print((int *)tablero);
 
-            if(d<4)
+            if(d<3){
                 d++;
-                i--;
-            if(comprobar(tablero,solucion)){cout<<"ganador"<<endl;return false;}
+                if(i>0)
+                    i--;
+            }
+
+            comprobar(tablero,solucion,&y);
+            if(y){cout<<"ganador"<<endl;return false;}
         }
-        if(x=="s"&&a>=tablero+4){
+        if(x=='w'&&a>=tablero+4){
             cambiazo(a,a-4);
             a=a-4;
             print((int *)tablero);
-            if(comprobar(tablero,solucion)){cout<<"ganador"<<endl;return false;}
+            comprobar(tablero,solucion,&y);
+            if(y){cout<<"ganador"<<endl;return false;}
 
         }
 

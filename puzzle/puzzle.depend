@@ -1,5 +1,6 @@
 # depslib dependency file v1.0
-1527045209 source:c:\users\usuario\desktop\xd\puzzle\main.cpp
+1527644141 source:c:\users\usuario\desktop\xd\puzzle\main.cpp
 	<iostream>
 	<stdlib.h>
+	<conio.h>
 
