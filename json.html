@@ -3,17 +3,35 @@
 <head>
 	<meta charset="utf-8"/>
 	<title>json a html</title>
-	<link href="https://www.w3schools.com/w3css/4/w3.css"> rel="stylesheet"/>
+	<link href="w3.css" rel="stylesheet"/>
 </head>
 <body>
-    <script src="jquery.min,js"></script>
+    
+    <div class="w3-container">
+        <p><br/></p>
+        <table class="w3-table w3-bordered w3-striped">
+            <thead>
+                <tr>
+                    <th>first name</th>
+                    <th>second name</th>
+                </tr>    
+            </thead>
+            <tbody id="mydata">
+                <tr>
+                    <td>[[firstname]]</td>
+                    <td>[[secondname]]</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+        
+    <script src="jquery.min.js"></script>
     <script src="jquery.miranda.min.js"></script>
     <script>
     
         var listdata=[
-            
-            
-            
+            {"firstname":"fred","secondname":"olaf"},
+            {"firstname":"mike","secondname":"rolf"}   
         ];
         $("#mydata").mirandajs(listdata);
     
