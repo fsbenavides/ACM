@@ -1,0 +1,21 @@
+# depslib dependency file v1.0
+1529178497 source:c:\users\usuario\desktop\xd\listaenlazada\main.cpp
+	<iostream>
+	<lista.h>
+	<nodo.h>
+
+1529036374 source:c:\users\usuario\desktop\xd\listaenlazada\src\nodo.cpp
+
+1529177906 c:\users\usuario\desktop\xd\listaenlazada\include\nodo.h
+	<iostream>
+
+1529036418 source:c:\users\usuario\desktop\xd\listaenlazada\src\lista.cpp
+	"lista.h"
+
+1529179181 c:\users\usuario\desktop\xd\listaenlazada\include\lista.h
+	<iostream>
+	<stdlib.h>
+	<string>
+	<fstream>
+	"nodo.h"
+
