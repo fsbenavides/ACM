@@ -15,6 +15,7 @@ class nodo
         ~nodo();
 
         nodo *next;
+
         T data;
 
         void delete_all();
@@ -26,6 +27,7 @@ nodo<T>::nodo()
 {
     data=NULL;
     next=NULL;
+
 }
 
 template <typename T>
@@ -33,6 +35,7 @@ nodo<T>::nodo(T data_)
 {
     data=data_;
     next=NULL;
+
 }
 
 template <typename T>
@@ -47,7 +50,9 @@ void nodo<T>::delete_all()
 template <typename T>
 void nodo<T>::print()
 {
-    cout<<data<<"->";
+
+    cout << data <<" "<<this<<" "<<"siguiente "<<next<<" "<<"-> ";
+    //cout<<data<<"->";
 }
 
 template <typename T>

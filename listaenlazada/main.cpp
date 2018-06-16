@@ -12,17 +12,19 @@ int main()
     cout << "Hello world!" << endl;
 
     lista<int> a;
-    int b=12;
-    int c=5;
+    lista<int> b;
 
-    a.add_head(b);
-    a.fill_user(1);
+    int c=2;
 
+    a.fill_user(2);
+    a.add_end(3);
     a.print();
-    a.add_end(c);
+    a.orden();
     a.print();
-    a.delete_all();
-    a.print();
+
+
+
+
 
 
 
