@@ -18,80 +18,42 @@ class lista
         lista();
         ~lista();
 
-        void add_head(T);
-        void add_end(T);
-        void delete_all();
+        void insertar(T);
         void delete_data(T);
         void print();
-        void fill_user(int);
         void busca(T);
-        void unir(lista);
-        void orden();
+
 
     private:
         nodo<T> *m_head;
-        int m_num_nodos;
-
-
 };
 template <typename T>
 lista<T>::lista()
 {
-   m_num_nodos=0;
    m_head=NULL;
 }
 
 template <typename T>
-void lista<T>::add_head(T data_)
+void lista<T>::insertar(T data_)
 {
-    nodo<T> *new_nodo =new nodo<T> (data_);
-    nodo<T> *temp=m_head;
-
-    if(!m_head){
-        m_head=new_nodo;
-    }
-    else{
-        new_nodo->next =m_head;
-        m_head= new_nodo;
-
-        while(temp)
-        {
-            temp=temp->next;
-        }
-
-    }
-    m_num_nodos++;
-
-}
-template <typename T>
-void lista<T>::add_end(T data_)
-{
-    nodo<T> *new_nodo =new nodo<T> (data_);
-    nodo<T> *temp=m_head;
-
+    nodo<T> *temp =m_head;
+    nodo<T> *aux =new nodo<T>(data_);
+    //temp->data=data_;
     if(!m_head)
     {
-        m_head=new_nodo;
+        m_head=aux;
+
     }
     else
     {
-        while(temp->next != NULL)
-        {
+        if(temp<aux)
+            temp->next=aux;
+        else
             temp=temp->next;
-        }
-        temp->next=new_nodo;
-
 
     }
-    m_num_nodos++;
 }
 
-template <typename T>
-void lista<T>::delete_all()
-{
-    m_head->delete_all();
-    m_head=0;
-}
 
 template <typename T>
 void lista<T>::delete_data(T data_)
@@ -107,42 +69,25 @@ void lista<T>::delete_data(T data_)
     }
     else
     {
-
         while(temp1)
         {
-
             if(temp1->data==data_)
             {
-
                 nodo<T> *aux_node = temp1;
                 temp->next = temp1->next;
                 delete aux_node;
                 cont++;
-                m_num_nodos--;
-
 
             }
 
             temp=temp->next;
             temp1=temp1->next;
-
         }
-
     }
 
 }
 
-template <typename T>
-void lista<T>::fill_user(int dime)
-{
-    T ele;
-    for (int i=0;i<dime;i++)
-    {
-        cout<<"ingresa el elemento"<< i+1<<endl;
-        cin>>ele;
-        add_end(ele);
-    }
-}
+
 template <typename T>
 void lista<T>::print()
 {
@@ -183,40 +128,7 @@ void lista<T>::busca(T data_){
     cout<<endl;
 
 }
-template <typename T>
-void lista<T>::unir(lista a)
-{
-    nodo<T> *temp2=a.m_head;
-    while(temp2)
-    {
-        add_end(temp2->data);
-        temp2=temp2->next;
-    }
 
-}
-template <typename T>
-void lista<T>::orden()
-{
-    T temp_data;
-    nodo<T> *aux_nodo = m_head;
-    nodo<T> *temp = aux_nodo;
-
-    while (aux_nodo) {
-        temp = aux_nodo;
-
-        while (temp->next) {
-            temp = temp->next;
-
-            if (aux_nodo->data > temp->data) {
-                temp_data = aux_nodo->data;
-                aux_nodo->data = temp->data;
-                temp->data = temp_data;
-            }
-        }
-
-        aux_nodo = aux_nodo->next;
-    }
-}
 
 template<typename T>
 lista<T>::~lista() {}

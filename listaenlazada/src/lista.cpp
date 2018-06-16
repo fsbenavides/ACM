@@ -1,5 +1,6 @@
 #include "lista.h"
 /*
+
 template <typename T>
 lista<T>::lista()
 {
@@ -95,7 +96,7 @@ void lista<T>::delete_data(T data_)
 template <typename T>
 void lista<T>::fill_user(int dime)
 {
-    T ele;
+    ele;#include <stdlib.h>
     for (int i=0;i<dime;i++)
     {
         cout<<"ingresa el elemento"<< i+1<<endl;
@@ -123,6 +124,7 @@ void lista<T>::print()
 }
 template<typename T>
 lista<T>::~lista() {}
+
 */
 
 

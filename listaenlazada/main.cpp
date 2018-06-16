@@ -1,6 +1,6 @@
 #include <iostream>
 
-#include <lista.h>
+#include "src\lista.cpp"
 #include <nodo.h>
 
 
@@ -14,13 +14,13 @@ int main()
     lista<int> a;
     lista<int> b;
 
-    int c=2;
+    a.insertar(1);
+    a.print();
+    a.insertar(2);
+    a.print();
+    a.insertar(3);
+    a.print();
 
-    a.fill_user(2);
-    a.add_end(3);
-    a.print();
-    a.orden();
-    a.print();
 
 
 

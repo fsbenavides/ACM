@@ -19,3 +19,26 @@
 	<fstream>
 	"nodo.h"
 
+1529173924 source:c:\users\alumno-e\downloads\acm-master\listaenlazada\src\nodo.cpp
+
+1529188250 source:c:\users\alumno-e\downloads\acm-master\listaenlazada\src\lista.cpp
+	"lista.h"
+
+1529190108 c:\users\alumno-e\downloads\acm-master\listaenlazada\include\lista.h
+	<iostream>
+	<stdlib.h>
+	<string>
+	<fstream>
+	"nodo.h"
+
+1529173924 c:\users\alumno-e\downloads\acm-master\listaenlazada\include\nodo.h
+	<iostream>
+
+1529190078 source:c:\users\alumno-e\downloads\acm-master\listaenlazada\main.cpp
+	<iostream>
+	"src\lista.cpp"
+	<nodo.h>
+
+1529188250 c:\users\alumno-e\downloads\acm-master\listaenlazada\src\lista.cpp
+	"lista.h"
+
