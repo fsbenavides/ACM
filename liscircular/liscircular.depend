@@ -1,0 +1,36 @@
+# depslib dependency file v1.0
+1529633242 source:c:\users\usuario\desktop\xd\liscircular\main.cpp
+	<iostream>
+	<stdlib.h>
+	<time.h>
+	"src\lista.cpp"
+
+1529633267 source:c:\users\usuario\desktop\xd\liscircular\src\lista.cpp
+	"lista.h"
+	"nodo.cpp"
+	<string>
+	<iostream>
+
+1529632744 c:\users\usuario\desktop\xd\liscircular\include\lista.h
+	"nodo.h"
+
+1529633267 c:\users\usuario\desktop\xd\liscircular\src\lista.cpp
+	"lista.h"
+	"nodo.cpp"
+	<string>
+	<iostream>
+
+1529633055 c:\users\usuario\desktop\xd\liscircular\include\nodo.h
+	<string>
+	<iostream>
+
+1529633315 c:\users\usuario\desktop\xd\liscircular\src\nodo.cpp
+	"nodo.h"
+	<string>
+	<iostream>
+
+1529633315 source:c:\users\usuario\desktop\xd\liscircular\src\nodo.cpp
+	"nodo.h"
+	<string>
+	<iostream>
+
