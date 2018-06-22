@@ -18,42 +18,34 @@ class lista
         lista();
         ~lista();
 
-        void insertar(T);
+
+        void delete_all();
         void delete_data(T);
         void print();
         void busca(T);
-
+        void add(T);
 
     private:
         nodo<T> *m_head;
+        int m_num_nodos;
+
+
 };
 template <typename T>
 lista<T>::lista()
 {
+   m_num_nodos=0;
    m_head=NULL;
 }
 
+
+
 template <typename T>
-void lista<T>::insertar(T data_)
+void lista<T>::delete_all()
 {
-    nodo<T> *temp =m_head;
-    nodo<T> *aux =new nodo<T>(data_);
-    //temp->data=data_;
-    if(!m_head)
-    {
-        m_head=aux;
-
-    }
-    else
-    {
-        if(temp<aux)
-            temp->next=aux;
-        else
-            temp=temp->next;
-
-    }
+    m_head->delete_all();
+    m_head=0;
 }
-
 
 template <typename T>
 void lista<T>::delete_data(T data_)
@@ -77,15 +69,52 @@ void lista<T>::delete_data(T data_)
                 temp->next = temp1->next;
                 delete aux_node;
                 cont++;
-
+                m_num_nodos--;
             }
-
             temp=temp->next;
             temp1=temp1->next;
         }
     }
-
 }
+template <typename T>
+void lista<T>::add(T data_)
+{
+    nodo<T> *new_nodo = new nodo<T> (data_);
+    nodo<T> *temp=m_head;
+
+    if(!m_head)
+    {
+        m_head = new_nodo;
+    }
+    else
+    {
+        if(m_head->data==data_)cout<<"ya existe el elemento"<<endl;
+
+        else
+        {
+            if((m_head->data>data_))
+            {
+                new_nodo->next = m_head;
+                m_head=new_nodo;
+            }
+            else
+            {
+
+
+                while((temp->next!=NULL)&&(temp->next->data<data_))
+                {
+                    if(temp->next->data==data_){
+                        cout<<temp->next->data<<" vs "<<data_<<endl;
+                    }
+                    temp=temp->next;
+                }
+                new_nodo->next=temp->next;
+                temp->next=new_nodo;
+                }
+        }
+    }
+}
+
 
 
 template <typename T>
@@ -128,6 +157,8 @@ void lista<T>::busca(T data_){
     cout<<endl;
 
 }
+
+
 
 
 template<typename T>

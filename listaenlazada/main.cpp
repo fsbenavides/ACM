@@ -1,6 +1,5 @@
 #include <iostream>
-
-#include "src\lista.cpp"
+#include <lista.h>
 #include <nodo.h>
 
 
@@ -12,14 +11,18 @@ int main()
     cout << "Hello world!" << endl;
 
     lista<int> a;
-    lista<int> b;
+    a.add(0);
+    a.print();
+    a.add(1);
+    a.print();
+    a.add(0);
+    a.print();
+    a.add(2);
+    a.print();
+    a.add(1);
+    a.print();
 
-    a.insertar(1);
-    a.print();
-    a.insertar(2);
-    a.print();
-    a.insertar(3);
-    a.print();
+
 
 
 
